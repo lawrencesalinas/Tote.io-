@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True) 
-    # image = 
+    image = models.ImageField(null=True, blank=True)
     brand = models.CharField(max_length=200, null=True, blank=True) 
     castegory = models.CharField(max_length=200, null=True, blank=True) 
     # null = True even with no user id, blank = true fill up a form not have to fill it up
