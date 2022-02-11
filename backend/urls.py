@@ -20,7 +20,7 @@ from django.urls import path, include
 
 from django.conf import settings
 # function that allows us to connect our urls to import static
-from django.conf.urls.static import static
+from django.conf.urls.static import static 
 
 
 
