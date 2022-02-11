@@ -11,6 +11,10 @@ from .models import Product
 from .serializers import ProductSerializer, UserSerializer, UserSerializerWithToken
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+# import make_password to hash password
+from django.contrib.auth.hashers import make_password
+# error handlers
+from rest_framework import status
 # Create your views here.
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -35,14 +39,32 @@ class MyTokenObtainPairView(TokenObtainPairView):
     # serializer class that returns user data
     serializer_class = MyTokenObtainPairSerializer
 
+# create a user
+@api_view(['POST'])  
+def registerUser(request):
+    data = request.data
+    # create a user with create method
+    user = User.objects.create(
+        first_name=data['name'],
+        username=data['email'],
+        email=data['email'],
+        # make_password was used to hash pashword from request
+        password=make_password(data['password'])
+    )
+    
+    serializer = UserSerializerWithToken(user, many=False)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
+# added permission class IsAuthenticated so only users can see their profile
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+# route only for admin to see, use IsAdmin for admins to see
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getUsers(request):
