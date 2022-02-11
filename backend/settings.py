@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "corsheaders",
-    'api'
+    'api.apps.ApiConfig'
 ]
 #imported rest framework JWT authentication
 REST_FRAMEWORK = {

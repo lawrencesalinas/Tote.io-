@@ -42,18 +42,25 @@ class MyTokenObtainPairView(TokenObtainPairView):
 # create a user
 @api_view(['POST'])  
 def registerUser(request):
-    data = request.data
-    # create a user with create method
-    user = User.objects.create(
-        first_name=data['name'],
-        username=data['email'],
-        email=data['email'],
-        # make_password was used to hash pashword from request
-        password=make_password(data['password'])
-    )
+    data = request.data 
+    # use try and except
+    try:
+        # create a user with create method
+        user = User.objects.create(
+            first_name=data['name'],
+            username=data['email'],
+            email=data['email'],
+            # make_password was used to hash pashword from request
+            password=make_password(data['password'])
+        )
+        
+        serializer = UserSerializerWithToken(user, many=False)
+        return Response(serializer.data)
+    # send a response with a customized error message
+    except:
+        message = {'detail': 'User with this email already exist'} 
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
     
-    serializer = UserSerializerWithToken(user, many=False)
-    return Response(serializer.data)
 
 
 @api_view(['GET'])
