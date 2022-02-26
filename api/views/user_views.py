@@ -26,11 +26,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
   
         # k are the keys, for each keys we plug in the v's
         # adding it to the dictionary with a for loop
-        for k, v in serializer.items():
+        for key, values in serializer.items():
             # print('this is k',k)
             # print('VVVV',v)
         # output the initial response when we get our first token
-            data[k] = v
+            data[key] = values
         
         return data
 class MyTokenObtainPairView(TokenObtainPairView):

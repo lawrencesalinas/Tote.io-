@@ -17,4 +17,5 @@ def updateUser(sender, instance, **kwargs):
 
 # connect this signa to the user model
 # everyrtime user model is saved, pre_save fire this function off
+# go to apps create ready meathod
 pre_save.connect(updateUser, sender=User)
