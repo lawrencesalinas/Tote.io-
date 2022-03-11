@@ -141,7 +141,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tote.io', 
+        'NAME': 'Tote.io', 
         # 'USER': 'postgres',
         # 'PASSWORD': 'emilee',
         # 'HOST': 'localhost',
