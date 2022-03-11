@@ -41,6 +41,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @api_view(['POST'])  
 def registerUser(request):
     data = request.data 
+    print(data)
     # use try and except
     try:
         # create a user with create method
@@ -59,6 +60,21 @@ def registerUser(request):
         message = {'detail': 'User with this email already exist'} 
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
     
+# @api_view(['PUT'])
+# # added permission class IsAuthenticated so only users can see their profile
+# @permission_classes([IsAuthenticated])
+# def updateUserProfile(request):
+#     user = request.user
+#     serializer = UserSerializerWithToken(user, many=False)
+#     data = request.data
+#     user.first_name = data['name']
+#     user.username = data['email']
+#     user.email = data['email']
+    
+#     if data['password'] != '':
+#         user.password = make_password(data['password'])
+#     user.save()
+#     return Response(serializer.data)
 
 
 @api_view(['GET'])
