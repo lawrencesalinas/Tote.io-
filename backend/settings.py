@@ -138,10 +138,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tote.io', 
-        'USER': 'postgres',
-        'PASSWORD': 'emilee',
-        'HOST': 'localhost',
-        'PORT': '5434'
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'emilee',
+        # 'HOST': 'localhost',
+        # 'PORT': '5434'
     }
 }
 
@@ -190,7 +190,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'backend/frontend/build/static')
 ]
 # user uploaded content
+
 MEDIA_ROOT  = 'static/images'
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles' )
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Default primary key field type
