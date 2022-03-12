@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import django_on_heroku
 from pathlib import Path
 import dj_database_url
 
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y5lkq6$7(52q0-%@v)*q85k0jn@9-g4wh1&qjrin%_a0sv7y^!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*','0.0.0.0', 'localhost', '127.0.0.1', 'tote-io.herokuapp.com/']
+ALLOWED_HOSTS = ['*', '0.0.0.0', 'localhost', '127.0.0.1', 'tote-io.herokuapp.com/']
 
 
 # Application definition
@@ -213,3 +213,4 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+django_on_heroku.settings(locals())
