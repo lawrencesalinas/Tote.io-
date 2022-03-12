@@ -110,7 +110,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'backend/frontend/build/')
+            os.path.join(BASE_DIR, 'backend/frontend/build')
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -186,13 +186,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-
-
-
-
-
-
 
 
 STATICFILES_DIRS = [
