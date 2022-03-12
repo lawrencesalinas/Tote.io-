@@ -200,7 +200,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'backend/frontend/build/static')
 ]
 # user uploaded content
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT  = 'static/images'
 STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles' )
