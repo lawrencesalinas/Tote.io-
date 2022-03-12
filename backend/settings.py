@@ -22,8 +22,8 @@ import os
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y5lkq6$7(52q0-%@v)*q85k0jn@9-g4wh1&qjrin%_a0sv7y^!'
 
+SECRET_KEY = os.getenv('SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -206,4 +206,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AWS_QUERYSTRING_AUTH = False
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.getenv('AWSID')
+
+AWS_SECRET_ACCESS_KEY = os.getenv('AWSKEY')
+
+AWS_STORAGE_BUCKET_NAME = 'tote-io-bucket'
+
 django_on_heroku.settings(locals())
+
